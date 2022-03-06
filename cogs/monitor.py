@@ -114,8 +114,8 @@ class Monitor(commands.Cog):
             if self.need_to_mention is False:
                 self.need_to_mention = True
 
-            self.currently_down.pop(server["address"])
-            self.retry_count.pop(server["address"])
+            self.currently_down.pop(server["address"], None)
+            self.retry_count.pop(server["address"], None)
 
     @tasks.loop(seconds=get_config("secs_between_ping"))
     async def monitor_uptime(self) -> None:
